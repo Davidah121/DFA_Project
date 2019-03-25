@@ -1,0 +1,24 @@
+﻿  Source.cpp
+  System.cpp
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\system.cpp(17): warning C4244: 'return': conversion from '_Rep' to 'long', possible loss of data
+          with
+          [
+              _Rep=__int64
+          ]
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\system.cpp(23): warning C4244: 'return': conversion from '_Rep' to 'long', possible loss of data
+          with
+          [
+              _Rep=__int64
+          ]
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\system.cpp(29): warning C4244: 'return': conversion from '_Rep' to 'long', possible loss of data
+          with
+          [
+              _Rep=__int64
+          ]
+  WndWindow.cpp
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\wndwindow.cpp(8): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\wndwindow.cpp(87): warning C4805: '==': unsafe mix of type 'ATOM' and type 'bool' in operation
+  Generating code
+  All 106 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  DFA_Project.vcxproj -> C:\Users\Alan\Documents\Visual Studio 2017\Projects\DFA_Project\Release\DFA_Project.exe
