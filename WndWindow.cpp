@@ -42,68 +42,109 @@ LRESULT _stdcall WndWindow::wndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM l
 
 	bool canDo = false;
 
+	HDC hdc;
+	PAINTSTRUCT ps;
+	HDC mem;
+	BITMAP img;
+	HGDIOBJ oldImg;
+
 	if (currentWindow != nullptr)
 	{
 		switch (msg)
 		{
+		case WM_ERASEBKGND:
+			return 0;
+			break;
 		case WM_PAINT:
-			if (currentWindow->paintFunction != nullptr)
-				currentWindow->paintFunction();
+			hdc = BeginPaint(hwnd, &ps);
+
+			mem = CreateCompatibleDC(hdc);
+			oldImg = SelectObject(mem, currentWindow->bitmap);
+			GetObject(currentWindow->bitmap, sizeof(BITMAP), &img);
+
+			BitBlt(hdc, 0, 0, img.bmWidth, img.bmHeight, mem, 0, 0, SRCCOPY);
+
+			DeleteDC(mem);
+			EndPaint(hwnd, &ps);
+			return 0;
 			break;
 		case WM_CLOSE:
-			//currentWindow->dispose();
-			break;
-		case WM_DESTROY:
 			if (currentWindow->closingFunction != nullptr)
 				currentWindow->closingFunction();
 			PostQuitMessage(0);
 			currentWindow->setRunning(false);
+			return 0;
+			break;
+		case WM_DESTROY:
+			/*
+			if (currentWindow->closingFunction != nullptr)
+				currentWindow->closingFunction();
+			PostQuitMessage(0);
+			currentWindow->setRunning(false);
+			return 0;
+			*/
+			return 0;
 			break;
 		case WM_KEYDOWN:
 			if (currentWindow->keyDownFunction != nullptr)
 				currentWindow->keyDownFunction(wparam, lparam);
+			return 0;
 			break;
 		case WM_KEYUP:
 			if (currentWindow->keyUpFunction != nullptr)
 				currentWindow->keyUpFunction(wparam, lparam);
+			return 0;
 			break;
 		case WM_LBUTTONDOWN:
 			if (currentWindow->mouseButtonDownFunction != nullptr)
 				currentWindow->mouseButtonDownFunction(MOUSE_LEFT);
+			return 0;
 			break;
 		case WM_MBUTTONDOWN:
 			if (currentWindow->mouseButtonDownFunction != nullptr)
 				currentWindow->mouseButtonDownFunction(MOUSE_MIDDLE);
+			return 0;
 			break;
 		case WM_RBUTTONDOWN:
 			if (currentWindow->mouseButtonDownFunction != nullptr)
 				currentWindow->mouseButtonDownFunction(MOUSE_RIGHT);
+			return 0;
 			break;
 		case WM_LBUTTONUP:
 			if (currentWindow->mouseButtonUpFunction != nullptr)
 				currentWindow->mouseButtonUpFunction(MOUSE_LEFT);
+			return 0;
 			break;
 		case WM_MBUTTONUP:
 			if (currentWindow->mouseButtonUpFunction != nullptr)
 				currentWindow->mouseButtonUpFunction(MOUSE_MIDDLE);
+			return 0;
 			break;
 		case WM_RBUTTONUP:
 			if (currentWindow->mouseButtonUpFunction != nullptr)
 				currentWindow->mouseButtonUpFunction(MOUSE_RIGHT);
+			return 0;
 			break;
 		case WM_MOUSEWHEEL:
 			if (currentWindow->mouseWheelFunction != nullptr)
 				currentWindow->mouseWheelFunction((wparam >> 16));
+			return 0;
+			break;
 		case WM_MOUSEHWHEEL:
 			if (currentWindow->mouseHWheelFunction != nullptr)
 				currentWindow->mouseHWheelFunction((wparam >> 16));
+			return 0;
+			break;
 		case WM_MOUSEMOVE:
 			if (currentWindow->mouseMovedFunction != nullptr)
 				currentWindow->mouseMovedFunction();
+			return 0;
+			break;
 		default:
 			break;
 		}
 	}
+
 	return DefWindowProc(hwnd, msg, wparam, lparam);
 }
 
@@ -114,6 +155,8 @@ WndWindow::WndWindow()
 	width = 320;
 	height = 240;
 	title = "";
+
+	initBitmap();
 
 	wndThread = new std::thread(&WndWindow::init, this, x, y, width, height, title);
 
@@ -128,6 +171,8 @@ WndWindow::WndWindow(const char* title)
 	height = 240;
 	this->title = title;
 
+	initBitmap();
+
 	wndThread = new std::thread(&WndWindow::init, this, x, y, width, height, title);
 
 	//init(x,y,width,height,title);
@@ -141,6 +186,8 @@ WndWindow::WndWindow(int width, int height, const char* title)
 	this->height = height;
 	this->title = title;
 
+	initBitmap();
+
 	wndThread = new std::thread(&WndWindow::init, this, x, y, width, height, title);
 
 	//init(x,y,width,height,title);
@@ -153,6 +200,8 @@ WndWindow::WndWindow(int x, int y, int width, int height, const char* title)
 	this->width = width;
 	this->height = height;
 	this->title = title;
+
+	initBitmap();
 
 	wndThread = new std::thread(&WndWindow::init, this, x, y, width, height, title);
 
@@ -187,6 +236,8 @@ void WndWindow::dispose()
 			DestroyWindow(windowHandle);
 		}
 		UnregisterClass(text.c_str(), hins);
+		DeleteObject(bitmap);
+		DeleteDC(myHDC);
 
 		WndWindow::removeWindowFromList(this);
 
@@ -251,6 +302,33 @@ void WndWindow::init(int x, int y, int width, int height, const char * title)
 	
 }
 
+void WndWindow::initBitmap()
+{
+	bitInfo.bmiHeader.biSize = sizeof(bitInfo.bmiHeader);
+	bitInfo.bmiHeader.biWidth = width;
+	bitInfo.bmiHeader.biHeight = -height;
+	bitInfo.bmiHeader.biCompression = BI_RGB;
+	bitInfo.bmiHeader.biPlanes = 1;
+	bitInfo.bmiHeader.biBitCount = 24;
+	bitInfo.bmiHeader.biSizeImage = 0;
+
+	bitInfo.bmiHeader.biXPelsPerMeter = width;
+	bitInfo.bmiHeader.biYPelsPerMeter = height;
+
+	bitInfo.bmiHeader.biClrImportant = 0;
+	bitInfo.bmiHeader.biClrUsed = 0;
+
+	bitInfo.bmiColors->rgbRed = 0;
+	bitInfo.bmiColors->rgbGreen = 0;
+	bitInfo.bmiColors->rgbBlue = 0;
+	bitInfo.bmiColors->rgbReserved = 0;
+
+	image = new Bitmap(width, height);
+	myHDC = GetDC(windowHandle);
+
+	bitmap = CreateCompatibleBitmap(myHDC, width, height);
+}
+
 void WndWindow::setRunning(bool value)
 {
 	myMutex.lock();
@@ -266,6 +344,11 @@ bool WndWindow::getRunning()
 	myMutex.unlock();
 
 	return v;
+}
+
+Bitmap * WndWindow::getImage()
+{
+	return image;
 }
 
 void WndWindow::setValid(bool value)
@@ -311,6 +394,17 @@ void WndWindow::setHeight(int height)
 void WndWindow::setSize(int width, int height)
 {
 	SetWindowPos(windowHandle, HWND_TOP, this->x, this->y, width, height, SWP_ASYNCWINDOWPOS | SWP_NOREDRAW);
+}
+
+void WndWindow::repaint()
+{
+	paintFunction();
+
+	unsigned char* bytes = image->getPixelsAsBytes();
+
+	int value = SetDIBits(myHDC, bitmap, 0, height, &bytes[0], &bitInfo, DIB_RGB_COLORS);
+
+	RedrawWindow(windowHandle, NULL, NULL, RDW_INVALIDATE);
 }
 
 bool WndWindow::getValid()

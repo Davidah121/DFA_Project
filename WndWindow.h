@@ -3,6 +3,7 @@
 #include <thread>
 #include <vector>
 #include <mutex>
+#include "Bitmap.h"
 
 class WndWindow
 {
@@ -27,8 +28,12 @@ public:
 	void setHeight(int height);
 	void setSize(int width, int height);
 
+	void repaint();
+
 	bool getValid();
 	bool getRunning();
+
+	Bitmap* getImage();
 
 	HWND getWindowHandle();
 
@@ -55,6 +60,8 @@ private:
 
 	void init(int x, int y, int width, int height, const char* title);
 	
+	void initBitmap();
+
 	void setRunning(bool value);
 	void setValid(bool value);
 	void run();
@@ -65,6 +72,7 @@ private:
 	int width = 320;
 	int height = 240;
 	const char* title = "";
+	Bitmap* image;
 
 	std::thread* wndThread;
 	std::mutex myMutex;
@@ -72,6 +80,9 @@ private:
 	HWND windowHandle;
 	WNDCLASSEX wndClass;
 	HINSTANCE hins;
+	HBITMAP bitmap;
+	BITMAPINFO bitInfo;
+	HDC myHDC;
 
 	bool valid = true;
 	bool running = true;
