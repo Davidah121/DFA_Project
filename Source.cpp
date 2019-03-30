@@ -3,10 +3,12 @@
 #include "System.h"
 #include "Bitmap.h"
 #include "Renderer.h"
+#include "BMPFont.h"
 
 #define PI 3.1415926
 
 Bitmap* img;
+BMPFont myFont = BMPFont("test1");
 
 int deg = 0;
 int x = 0;
@@ -26,23 +28,26 @@ void paintFunc()
 	Renderer::clear();
 
 	Renderer::setDrawColor(Color{ 255,255,255 });
+	//Renderer::drawRect(0, 0, 128, 128);
+	Renderer::drawCircle(64, 64, 28);
+	Renderer::drawCircle(196, 64, 28);
+	Renderer::drawCircle(196, 196, 28);
+	Renderer::drawCircle(64, 196, 28);
 
-	
-	Renderer::drawRect(160+(cos(PI*deg/180)*16) + x, 120+(sin(PI*deg/180)*16), 32, 32);
-
-	x += 2;
-	deg+=5;
-
-	if (deg >= 360)
-		deg = 0;
-	
+	//Renderer::drawImage(myFont.getFontImage(), 0, 0);
+	Renderer::setDrawColor(Color{ 0, 0, 255 });
+	Renderer::drawText("Q1", 64 - 16, 64 - 16);
+	Renderer::drawText("Q2", 196 - 16, 64 - 16);
+	Renderer::drawText("Q3", 196 - 16, 196 - 16);
+	Renderer::drawText("Q4", 64 - 16, 196 - 16);
 }
 
 int main()
 {
-	WndWindow wnd("TITLE");
-
+	WndWindow wnd(1280, 720, "TITLE");
+	
 	img = wnd.getImage();
+	Renderer::bindFont(&myFont);
 
 	wnd.setMouseButtonDownFunction(dbCLK);
 	wnd.setPaintFunction(paintFunc);

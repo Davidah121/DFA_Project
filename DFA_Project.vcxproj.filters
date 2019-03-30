@@ -30,6 +30,21 @@
     <ClInclude Include="MathExt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BMPFont.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="quickDir.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="quickIO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stringTools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WndWindow.cpp">
@@ -50,5 +65,35 @@
     <ClCompile Include="MathExt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BMPFont.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="quickDir.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="quickIO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stringTools.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Text.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="test1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test1.ft">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

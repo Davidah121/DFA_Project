@@ -1,5 +1,6 @@
 #pragma once
 #include "Bitmap.h"
+#include "BMPFont.h"
 
 class Renderer
 {
@@ -8,15 +9,27 @@ public:
 	~Renderer();
 
 	static void bindImage(Bitmap* img);
+	static void bindFont(BMPFont* font);
+
+	static Bitmap* getBindedImage();
+	static BMPFont* getBindedFont();
+
 	static void clear();
 
 	static void setDrawColor(Color v);
 
 	static void drawRect(int x, int y, int width, int height);
+	static void drawCircle(int x, int y, int radius);
+
 	static void drawImage(Bitmap* img, int x, int y);
-	static void drawImagePart(Bitmap* img, int x, int y, int leftCull, int topCull, int widthCull, int heightCull);
+	static void drawImagePart(Bitmap* img, int x, int y, int leftCull, int topCull, int rightCull, int bottomCull);
+
+	static void drawText(std::string s, int x, int y);
+	//static void drawText(const char* s, int x, int y);
+
 private:
 	static Bitmap* bindedImage;
 	static Color drawColor;
+	static BMPFont* bindedFont;
 };
 

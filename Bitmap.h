@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <fstream>
+#include "MathExt.h"
 
 struct Color {
 	unsigned char b;
@@ -23,12 +24,17 @@ public:
 	int getWidth();
 	int getHeight();
 
-	static Bitmap* loadBitmap(const char* filename);
+	Color getPixel(int x, int y);
+
+	static Bitmap* loadImage(char* filename);
 
 private:
 	int width = 0;
 	int height = 0;
 	Color* pixels;
+	
 	unsigned char* alphaChannel;
+
+	void loadBMP(char* data, int size);
 };
 
