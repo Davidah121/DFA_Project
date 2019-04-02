@@ -18,6 +18,7 @@ public:
 
 	static void setDrawColor(Color v);
 
+	static void drawLine(int x1, int y1, int x2, int y2);
 	static void drawRect(int x, int y, int width, int height);
 	static void drawCircle(int x, int y, int radius);
 
