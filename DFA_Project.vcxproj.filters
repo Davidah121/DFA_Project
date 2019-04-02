@@ -45,6 +45,9 @@
     <ClInclude Include="stringTools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WndWindow.cpp">
@@ -78,6 +81,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="stringTools.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
