@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BezierCurve.h" />
     <ClInclude Include="Bitmap.h" />
     <ClInclude Include="BMPFont.h" />
     <ClInclude Include="Box.h" />
@@ -124,9 +125,11 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="stringTools.h" />
     <ClInclude Include="System.h" />
+    <ClInclude Include="Vec2f.h" />
     <ClInclude Include="WndWindow.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BezierCurve.cpp" />
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="BMPFont.cpp" />
     <ClCompile Include="Box.cpp" />

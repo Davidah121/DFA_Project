@@ -12,6 +12,7 @@ BMPFont myFont = BMPFont("test1");
 
 int deg = 0;
 int x = 0;
+double t = 0;
 
 void dbCLK(int but)
 {
@@ -28,10 +29,35 @@ void paintFunc()
 	Renderer::clear();
 
 	Renderer::setDrawColor(Color{ 255, 0, 255 });
-	Renderer::drawLine(64, 64, 196, 196);
+	BezierCurve q = BezierCurve();
+	q.addPoint(Vec2f(196, 64));
+	q.addPoint(Vec2f(130, 32));
+	q.addPoint(Vec2f(64, 64));
+
+	BezierCurve q2 = BezierCurve();
+	q2.addPoint(Vec2f(196, 64));
+	q2.addPoint(Vec2f(130, 96));
+	q2.addPoint(Vec2f(64, 64));
+
+	BezierCurve q3 = BezierCurve();
+	q3.addPoint(Vec2f(196, 64));
+	q3.addPoint(Vec2f(130, 16));
+	q3.addPoint(Vec2f(64, 64));
+
+	BezierCurve q4 = BezierCurve();
+	q4.addPoint(Vec2f(196, 64));
+	q4.addPoint(Vec2f(130, 112));
+	q4.addPoint(Vec2f(64, 64));
+
+	Renderer::setDrawColor(Color{ 255,255,0 });
+	Renderer::drawBezierCurve(q);
+	Renderer::drawBezierCurve(q4);
+
+	Renderer::setDrawColor(Color{ 0,255,255 });
+	Renderer::drawBezierCurve(q2);
+	Renderer::drawBezierCurve(q3);
 
 	Renderer::setDrawColor(Color{ 255,255,255 });
-	//Renderer::drawRect(0, 0, 128, 128);
 	
 	Renderer::drawCircle(64, 64, 28);
 	Renderer::drawCircle(196, 64, 28);
@@ -47,8 +73,6 @@ void paintFunc()
 	Renderer::drawText("Q3", 196 - 16, 196 - 16);
 	Renderer::drawText("Q4", 64 - 16, 196 - 16);
 	
-	
-
 }
 
 int main()
@@ -68,5 +92,6 @@ int main()
 		System::sleepMicros(16666);
 	}
 	
+	system("pause");
 	return 0;
 }

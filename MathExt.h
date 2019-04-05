@@ -5,6 +5,7 @@
 #undef min
 
 #define PI 3.1415927
+#define E 2.718281828459
 
 class MathExt
 {
@@ -66,6 +67,8 @@ public:
 	static float clamp(float value, float min, float max);
 	static double clamp(double value, double min, double max);
 	static long clamp(long value, long min, long max);
+
+	static double sigmoid(double t);
 
 	static float cos(float value);
 	static double cos(double value);
