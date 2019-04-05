@@ -45,10 +45,14 @@
     <ClInclude Include="stringTools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="BezierCurve.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vec2f.h">
+=======
+    <ClInclude Include="State.h">
+>>>>>>> 9bb3872dc8d08513f84b006df167b3a85f1dbb2f
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -86,7 +90,11 @@
     <ClCompile Include="stringTools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="BezierCurve.cpp">
+=======
+    <ClCompile Include="State.cpp">
+>>>>>>> 9bb3872dc8d08513f84b006df167b3a85f1dbb2f
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
