@@ -3,7 +3,7 @@
 
 struct Transition
 {
-	char input;
+	char* input;
 	void* output;
 };
 
