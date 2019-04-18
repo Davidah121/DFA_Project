@@ -1,5 +1,8 @@
 #include "State.h"
 
+State::State()
+{
+}
 
 State::State(char name)
 {
@@ -11,7 +14,7 @@ char State::getName()
 	return name;
 }
 
-char State::setName(char name)
+void State::setName(char name)
 {
 	this->name = name;
 }
@@ -40,8 +43,6 @@ void State::addTransition(Transition trans)
 {
 	this->trans.push_back(trans);
 }
-
-
 
 State::~State()
 {

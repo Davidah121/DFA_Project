@@ -1,9 +1,4 @@
-﻿  Source.cpp
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\source.cpp(8): warning C4005: 'PI': macro redefinition
-  c:\users\alan\documents\visual studio 2017\projects\dfa_project\mathext.h(7): note: see previous definition of 'PI'
-  Generating code
-  1 of 704 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  DFA_Project.vcxproj -> C:\Users\Alan\Documents\Visual Studio 2017\Projects\DFA_Project\Release\DFA_Project.exe
+﻿  State.cpp
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\state.h(7): error C2143: syntax error: missing ';' before '*'
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\state.h(7): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\state.h(7): error C2238: unexpected token(s) preceding ';'

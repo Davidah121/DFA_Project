@@ -4,17 +4,17 @@
 struct Transition
 {
 	char input;
-	State output;
+	void* output; //Can't have a State*
 };
-
 
 class State
 {
 public:
+	State();
 	State(char);
 	~State();
 	char getName();
-	char setName(char);
+	void setName(char);
 	bool isFinalState();
 	void setFinalState(bool);
 	bool isAcceptState();
@@ -27,7 +27,4 @@ private:
 	char name;
 	std::vector<Transition> trans = std::vector<Transition>();
 	
-
-
 };
-
