@@ -119,6 +119,7 @@
     <ClInclude Include="Bitmap.h" />
     <ClInclude Include="BMPFont.h" />
     <ClInclude Include="Box.h" />
+    <ClInclude Include="DFA.h" />
     <ClInclude Include="MathExt.h" />
     <ClInclude Include="quickDir.h" />
     <ClInclude Include="quickIO.h" />
@@ -134,6 +135,7 @@
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="BMPFont.cpp" />
     <ClCompile Include="Box.cpp" />
+    <ClCompile Include="DFA.cpp" />
     <ClCompile Include="MathExt.cpp" />
     <ClCompile Include="quickDir.cpp" />
     <ClCompile Include="quickIO.cpp" />
