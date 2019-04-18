@@ -360,6 +360,26 @@ double MathExt::tan(double value)
 	return std::tan(value);
 }
 
+float MathExt::toDegrees(float value)
+{
+	return (value*180.0)/PI;
+}
+
+double MathExt::toDegrees(double value)
+{
+	return (value * 180.0) / PI;
+}
+
+float MathExt::toRadians(float value)
+{
+	return (value * PI) / 180;
+}
+
+float MathExt::toRadians(double value)
+{
+	return (value * PI) / 180;
+}
+
 float MathExt::arctan(float value)
 {
 	return std::atanf(value);

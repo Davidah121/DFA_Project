@@ -1,4 +1,6 @@
 #include "DFA.h"
+#include "MathExt.h"
+#include "Renderer.h"
 
 DFA::DFA(char* fileName)
 {
@@ -23,4 +25,20 @@ void DFA::addState(State state)
 State DFA::getState(int index)
 {
 	return dfaStates[index];
+}
+
+void DFA::drawDFA()
+{
+	double dirChange = 360.0 / dfaStates.size();
+
+	for (int i = 0; i < dfaStates.size(); i++)
+	{
+		int x = 128+MathExt::cos(MathExt::toRadians(dirChange * i))*128;
+		int y = 128+MathExt::sin(MathExt::toRadians(dirChange * i))*128;
+
+		Renderer::setDrawColor({ 255,255,255 });
+		Renderer::drawCircle(x, y, 16);
+		Renderer::setDrawColor({ 0,0,0 });
+		Renderer::drawText(dfaStates[i].getName(), x, y);
+	}
 }

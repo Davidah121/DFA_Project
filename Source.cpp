@@ -8,7 +8,7 @@
 #define PI 3.1415926
 
 Bitmap* img;
-BMPFont myFont = BMPFont("test1");
+BMPFont myFont = BMPFont("newFont");
 
 int deg = 0;
 int x = 0;
@@ -50,12 +50,12 @@ void paintFunc()
 	//Renderer::drawImage(myFont.getFontImage(), 0, 0);
 	
 	Renderer::setDrawColor(Color{ 0, 0, 255 });
-	Renderer::drawText("Q1", 64 - 16, 64 - 16);
-	Renderer::drawText("Q2", 196 - 16, 64 - 16);
-	Renderer::drawText("Q3", 196 - 16, 196 - 16);
-	Renderer::drawText("Q4", 64 - 16, 196 - 16);
+	Renderer::drawText("Q1", 64-16, 64-8);
+	Renderer::drawText("Q2", 196-16, 64-8);
+	Renderer::drawText("Q3", 196-16, 196-8);
+	Renderer::drawText("Q4", 64-16, 196-8);
 
-	Renderer::drawText("a", 64-8, 0);
+	Renderer::drawText("a", 64, 0);
 	
 }
 

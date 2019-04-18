@@ -79,6 +79,12 @@ public:
 	static float tan(float value);
 	static double tan(double value);
 
+	static float toDegrees(float value);
+	static double toDegrees(double value);
+
+	static float toRadians(float value);
+	static float toRadians(double value);
+
 	static float arccos(float value);
 	static double arccos(double value);
 

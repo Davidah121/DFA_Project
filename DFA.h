@@ -15,8 +15,12 @@ public:
 	State getState(int);
 
 	bool processString(char*);
-private:
 	
+	//timeToWait in frames
+	void processStringInteractive(char* inputString, int timeToWait);
+	void drawDFA();
+private:
+	int framesWaited = 0;
 	std::vector<State> dfaStates = std::vector<State>();
 };
 
