@@ -4,6 +4,7 @@
 #include "Bitmap.h"
 #include "Renderer.h"
 #include "BMPFont.h"
+#include "DFA.cpp"
 
 #define PI 3.1415926
 
@@ -53,6 +54,7 @@ void paintFunc()
 
 int main()
 {
+	/*
 	WndWindow wnd(1280, 720, "TITLE");
 	
 	img = wnd.getImage();
@@ -67,6 +69,7 @@ int main()
 		wnd.repaint();
 		System::sleepMicros(16666);
 	}
-	
+	*/
+	test();
 	return 0;
 }

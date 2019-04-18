@@ -1,17 +1,17 @@
 #include "State.h"
 
 
-State::State(char name)
+State::State(char* name)
 {
 	this->name = name;
 }
 
-char State::getName()
+char* State::getName()
 {
 	return name;
 }
 
-char State::setName(char name)
+void State::setName(char* name)
 {
 	this->name = name;
 }
