@@ -145,6 +145,15 @@ void Renderer::drawLine(int x1, int y1, int x2, int y2)
 	}
 }
 
+void Renderer::drawRectOutline(int x, int y, int width, int height)
+{
+	drawLine(x, y, x + width, y);
+	drawLine(x, y, x, y + height);
+	drawLine(x+width, y, x+width, y + height);
+	drawLine(x, y+height, x + width, y+height);
+
+}
+
 void Renderer::drawRect(int x, int y, int width, int height)
 {
 	if (bindedImage != nullptr)
@@ -273,10 +282,12 @@ void Renderer::drawBezierCurve(BezierCurve v)
 	{
 		Vec2f v1 = v.evaluate(0);
 
-		for (int t = -10; t < 10; t++)
+		int precision = 20;
+		for (int t = 0; t < precision; t++)
 		{
-			//double wVal = (double)t/20;
-			double wVal = MathExt::sigmoid(t);
+			//double sigVal = -10.0 + (20.0 * ((double)t/ (double)precision));
+			double wVal = (double)t/precision;
+			//double wVal = MathExt::sigmoid(sigVal);
 			Vec2f v2 = v.evaluate(wVal);
 
 			drawLine(v1.x,v1.y,v2.x,v2.y);
@@ -454,6 +465,7 @@ void Renderer::drawText(std::string s, int x, int y)
 			}
 			else if(s.at(i)>=32)
 			{
+				//drawRectOutline(x + xOff, y + yOff, b.width, b.height);
 				drawImagePart(bindedFont->getFontImage(), x + xOff, y + yOff, b.x, b.y, b.x + b.width, b.y + b.height);
 				xOff += b.width;
 			}
