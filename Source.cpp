@@ -30,32 +30,14 @@ void paintFunc()
 
 	Renderer::setDrawColor(Color{ 255, 0, 255 });
 	BezierCurve q = BezierCurve();
-	q.addPoint(Vec2f(196, 64));
-	q.addPoint(Vec2f(130, 32));
-	q.addPoint(Vec2f(64, 64));
+	q.addPoint(Vec2f(36+8, 64));
+	q.addPoint(Vec2f(36+8, 0));
+	q.addPoint(Vec2f(92-8, 0));
+	q.addPoint(Vec2f(92-8, 64));
 
-	BezierCurve q2 = BezierCurve();
-	q2.addPoint(Vec2f(196, 64));
-	q2.addPoint(Vec2f(130, 96));
-	q2.addPoint(Vec2f(64, 64));
-
-	BezierCurve q3 = BezierCurve();
-	q3.addPoint(Vec2f(196, 64));
-	q3.addPoint(Vec2f(130, 16));
-	q3.addPoint(Vec2f(64, 64));
-
-	BezierCurve q4 = BezierCurve();
-	q4.addPoint(Vec2f(196, 64));
-	q4.addPoint(Vec2f(130, 112));
-	q4.addPoint(Vec2f(64, 64));
 
 	Renderer::setDrawColor(Color{ 255,255,0 });
 	Renderer::drawBezierCurve(q);
-	Renderer::drawBezierCurve(q4);
-
-	Renderer::setDrawColor(Color{ 0,255,255 });
-	Renderer::drawBezierCurve(q2);
-	Renderer::drawBezierCurve(q3);
 
 	Renderer::setDrawColor(Color{ 255,255,255 });
 	
@@ -68,10 +50,12 @@ void paintFunc()
 	//Renderer::drawImage(myFont.getFontImage(), 0, 0);
 	
 	Renderer::setDrawColor(Color{ 0, 0, 255 });
-	Renderer::drawText("Q123", 64 - 16, 64 - 16);
+	Renderer::drawText("Q1", 64 - 16, 64 - 16);
 	Renderer::drawText("Q2", 196 - 16, 64 - 16);
 	Renderer::drawText("Q3", 196 - 16, 196 - 16);
 	Renderer::drawText("Q4", 64 - 16, 196 - 16);
+
+	Renderer::drawText("a", 64-8, 0);
 	
 }
 

@@ -282,10 +282,12 @@ void Renderer::drawBezierCurve(BezierCurve v)
 	{
 		Vec2f v1 = v.evaluate(0);
 
-		for (int t = -10; t < 10; t++)
+		int precision = 20;
+		for (int t = 0; t < precision; t++)
 		{
-			//double wVal = (double)t/20;
-			double wVal = MathExt::sigmoid(t);
+			//double sigVal = -10.0 + (20.0 * ((double)t/ (double)precision));
+			double wVal = (double)t/precision;
+			//double wVal = MathExt::sigmoid(sigVal);
 			Vec2f v2 = v.evaluate(wVal);
 
 			drawLine(v1.x,v1.y,v2.x,v2.y);
