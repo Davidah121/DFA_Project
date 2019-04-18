@@ -1,6 +1,7 @@
 #pragma once
 #include "Bitmap.h"
 #include "BMPFont.h"
+#include "BezierCurve.h"
 
 class Renderer
 {
@@ -22,6 +23,7 @@ public:
 	static void drawRect(int x, int y, int width, int height);
 	static void drawCircle(int x, int y, int radius);
 
+	static void drawBezierCurve(BezierCurve v);
 	static void drawImage(Bitmap* img, int x, int y);
 	static void drawImagePart(Bitmap* img, int x, int y, int leftCull, int topCull, int rightCull, int bottomCull);
 

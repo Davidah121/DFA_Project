@@ -57,11 +57,11 @@ void Renderer::drawLine(int x1, int y1, int x2, int y2)
 {
 	if (bindedImage != nullptr)
 	{
-		
 		int maxX, maxY, minX, minY;
 
 		Color* pixs = bindedImage->getPixels();
 		int imgWidth = bindedImage->getWidth();
+		int imgHeight = bindedImage->getHeight();
 
 		if (x1 >= x2)
 		{
@@ -80,62 +80,66 @@ void Renderer::drawLine(int x1, int y1, int x2, int y2)
 			minY = y1;
 		}
 		
-		//std::cout << maxX << ", " << maxY << ", " << std::endl;
-		//std::cout << minX << ", " << minY << ", " << std::endl;
-
 		if (maxY - minY != 0)
 		{
 			//normal line
 			double ySlope = (double)(maxX - minX) / (maxY - minY);
 			double xint = x1 - (ySlope*y1);
-
+			
 			maxX = MathExt::clamp(maxX, 0, bindedImage->getWidth());
 			minX = MathExt::clamp(minX, 0, bindedImage->getWidth());
 			maxY = MathExt::clamp(maxY, 0, bindedImage->getHeight());
 			minY = MathExt::clamp(minY, 0, bindedImage->getHeight());
 
-			for (int y = minY; y < maxY-1; y++)
+			if (maxY < minY)
+			{
+				int swap = minY;
+				minY = maxY;
+				maxY = swap;
+			}
+
+			int y = minY;
+			do
 			{
 				int startX = ySlope * y + xint;
 				int endX = startX;
 
-				if (y != minY)
+				if (y != maxY)
 				{
-					int endX = ySlope*(y+1) + xint;
+					endX = ySlope*(y+1) + xint;
 				}
 				
 				if (startX > endX)
 				{
 					int swap = startX;
 					startX = endX;
-					endX = startX;
+					endX = swap;
 				}
 
 				int x = startX;
-
 				do
 				{
 					pixs[x + (imgWidth*y)] = drawColor;
+					x++;
 				} while (x < endX);
+				y++;
+			} while (y < maxY);
 
-			}
-			//double xint = -(ySlope*y1);
 		}
 		else
 		{
 			//horizontal line
 
-			
-
 			maxX = MathExt::clamp(maxX, 0, bindedImage->getWidth());
 			minX = MathExt::clamp(minX, 0, bindedImage->getWidth());
 			int y = y1;
 
-			std::cout << "minX: " << minX << ", maxX: " << maxX << std::endl;
-			for (int x = minX; x < maxX; x++)
+			int x = minX;
+			do
 			{
 				pixs[x + (imgWidth*y)] = drawColor;
-			}
+				x++;
+			} while (x < maxX);
 		}
 
 	}
@@ -260,6 +264,26 @@ void Renderer::drawCircle(int x, int y, int radius)
 				}
 			}
 		}
+	}
+}
+
+void Renderer::drawBezierCurve(BezierCurve v)
+{
+	if (bindedImage != nullptr)
+	{
+		Vec2f v1 = v.evaluate(0);
+
+		for (int t = -10; t < 10; t++)
+		{
+			//double wVal = (double)t/20;
+			double wVal = MathExt::sigmoid(t);
+			Vec2f v2 = v.evaluate(wVal);
+
+			drawLine(v1.x,v1.y,v2.x,v2.y);
+
+			v1 = v2;
+		}
+
 	}
 }
 

@@ -303,6 +303,13 @@ long MathExt::clamp(long value, long min, long max)
 		return value;
 }
 
+double MathExt::sigmoid(double t)
+{
+	double v = 1.0 / (1.0 + MathExt::pow(2.718281828, (double)-t));
+
+	return v;
+}
+
 float MathExt::cos(float value)
 {
 	return std::cosf(value);
