@@ -54,9 +54,7 @@ DFA::DFA(char* fileName)
 
 			int arrowLocation = vectorBoi[i].find("->", 0);
 			string toStateName = vectorBoi[i].substr(arrowLocation, vectorBoi[i].size() - arrowLocation);
-			//Process next thing
-			//Format
-			//(state,input)->state
+			
 			State *firstState;
 			State *secondState;
 			for (int j = 0; j < dfaStates.size(); j++)
