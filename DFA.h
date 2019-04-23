@@ -14,7 +14,7 @@ public:
 	void addState(State);
 	State getState(int);
 
-	bool processString(char*);
+	bool processString(std::string);
 
 	void errorChecking();
 

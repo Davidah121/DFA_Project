@@ -5,12 +5,26 @@ c:\users\tyler\source\repos\dfa_project\dfa.cpp(20): warning C4267: '=': convers
 c:\users\tyler\source\repos\dfa_project\dfa.cpp(21): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 c:\users\tyler\source\repos\dfa_project\dfa.cpp(25): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 c:\users\tyler\source\repos\dfa_project\dfa.cpp(26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-c:\users\tyler\source\repos\dfa_project\dfa.cpp(49): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\tyler\source\repos\dfa_project\dfa.cpp(52): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\tyler\source\repos\dfa_project\dfa.cpp(50): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 c:\users\tyler\source\repos\dfa_project\dfa.cpp(55): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\tyler\source\repos\dfa_project\dfa.cpp(103): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\tyler\source\repos\dfa_project\dfa.cpp(104): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\tyler\source\repos\dfa_project\dfa.cpp(63): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\tyler\source\repos\dfa_project\dfa.cpp(68): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\tyler\source\repos\dfa_project\dfa.cpp(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\tyler\source\repos\dfa_project\dfa.cpp(213): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\tyler\source\repos\dfa_project\dfa.cpp(214): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\tyler\source\repos\dfa_project\dfa.cpp(230): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\tyler\source\repos\dfa_project\dfa.cpp(231): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\tyler\source\repos\dfa_project\dfa.cpp(233): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\tyler\source\repos\dfa_project\dfa.cpp(234): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\tyler\source\repos\dfa_project\dfa.cpp(241): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\tyler\source\repos\dfa_project\dfa.cpp(242): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\tyler\source\repos\dfa_project\dfa.cpp(283): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\tyler\source\repos\dfa_project\dfa.cpp(293): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\tyler\source\repos\dfa_project\dfa.cpp(294): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Source.cpp
+c:\users\tyler\source\repos\dfa_project\source.cpp(9): warning C4005: 'PI': macro redefinition
+  c:\users\tyler\source\repos\dfa_project\mathext.h(7): note: see previous definition of 'PI'
   State.cpp
+c:\users\tyler\source\repos\dfa_project\state.cpp(41): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...
-c:\users\tyler\source\repos\dfa_project\dfa.cpp(72): error C4703: potentially uninitialized local pointer variable 'firstState' used
-c:\users\tyler\source\repos\dfa_project\dfa.cpp(72): error C4703: potentially uninitialized local pointer variable 'secondState' used
+  DFA_Project.vcxproj -> C:\Users\Tyler\source\repos\DFA_Project\x64\Debug\DFA_Project.exe

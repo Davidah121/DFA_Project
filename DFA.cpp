@@ -89,7 +89,7 @@ DFA::DFA(char* fileName)
 			
 			if (firstState != nullptr)
 			{
-				firstState->addTransition(Transition{ input, (void*)secondState });
+				firstState->addTransition(Transition{ input[0], (void*)secondState });
 			}
 		}
 
@@ -112,9 +112,33 @@ State DFA::getState(int index)
 	return dfaStates[index];
 }
 
-bool DFA::processString(char *)
+bool DFA::processString(std::string c)
 {
-	return false;
+	State *currentState = &dfaStates[startStateIndex];
+
+	for (int i = 0; i < c.size(); i++)
+	{
+		char currentChar = c[i];
+		State *next;
+		for (int j = 0; j < currentState->getAmountOfTransitions(); j++)
+		{
+			Transition transition = currentState->getTransition(j);			
+			if (transition.input == currentChar)
+			{
+				next = (State*)transition.output;
+			}
+		}
+	}
+
+	if (currentState->isAcceptState())
+	{
+		return true;
+	}
+	else 
+	{
+		return false;
+	}
+
 }
 
 void DFA::errorChecking()
@@ -254,7 +278,9 @@ void DFA::drawDFA()
 				{
 					if (tempState == (State*)dfaStates[i].getTransition(k).output)
 					{
-						Renderer::drawText(dfaStates[i].getTransition(k).input, 160 + midX, 120 + midY + y2v);
+						std::string text = "";
+						text += dfaStates[i].getTransition(k).input;
+						Renderer::drawText(text, 160 + midX, 120 + midY + y2v);
 						
 					}
 				}

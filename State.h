@@ -3,7 +3,7 @@
 
 struct Transition
 {
-	std::string input;
+	char input;
 	void* output;
 };
 
