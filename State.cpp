@@ -1,34 +1,24 @@
 #include "State.h"
 
 
-State::State(char* name)
+State::State(std::string name)
 {
 	this->name = name;
 }
 
-char* State::getName()
+std::string State::getName()
 {
 	return name;
 }
 
-void State::setName(char* name)
+void State::setName(std::string name)
 {
 	this->name = name;
 }
 
-bool State::isFinalState()
-{
-	return finalState;
-}
-
-void State::setFinalState(bool finalState)
-{
-	this->finalState = finalState;
-}
-
 bool State::isAcceptState()
 {
-	return false;
+	return acceptState;
 }
 
 void State::setAcceptState(bool acceptState)
@@ -39,6 +29,16 @@ void State::setAcceptState(bool acceptState)
 void State::addTransition(Transition trans)
 {
 	this->trans.push_back(trans);
+}
+
+Transition State::getTransition(int index)
+{
+	return trans[index];
+}
+
+int State::getAmountOfTransitions()
+{
+	return trans.size();
 }
 
 

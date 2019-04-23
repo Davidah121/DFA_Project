@@ -110,7 +110,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Text.txt">
+    <Text Include="DFA_Test.txt">
       <Filter>Resources</Filter>
     </Text>
   </ItemGroup>

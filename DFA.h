@@ -16,11 +16,16 @@ public:
 
 	bool processString(char*);
 
-	
+	void errorChecking();
+
 	//timeToWait in frames
 	void processStringInteractive(char* inputString, int timeToWait);
 	void drawDFA();
+
+	void debugStuff();
+
 private:
+	bool validDFA;
 	int framesWaited = 0;
 	int startStateIndex = -1;
 	std::vector<string> inputs = std::vector<string>();

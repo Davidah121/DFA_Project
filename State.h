@@ -3,7 +3,7 @@
 
 struct Transition
 {
-	char* input;
+	std::string input;
 	void* output;
 };
 
@@ -11,20 +11,20 @@ struct Transition
 class State
 {
 public:
-	State(char*);
+	State(std::string);
 	~State();
-	char* getName();
-	void setName(char*);
-	bool isFinalState();
-	void setFinalState(bool);
+	std::string getName();
+	void setName(std::string);
 	bool isAcceptState();
 	void setAcceptState(bool);
 	void addTransition(Transition);
+	Transition getTransition(int index);
+	int getAmountOfTransitions();
 
 private:
 	bool acceptState = false;
 	bool finalState = false;
-	char* name;
+	std::string name;
 	std::vector<Transition> trans = std::vector<Transition>();
 	
 
