@@ -4,11 +4,13 @@
 #include "Bitmap.h"
 #include "Renderer.h"
 #include "BMPFont.h"
+#include "DFA.h"
 
 #define PI 3.1415926
 
 Bitmap* img;
 BMPFont myFont = BMPFont("newFont");
+DFA dfaTest = DFA((char*)"DFA_Test.txt");
 
 int deg = 0;
 int x = 0;
@@ -25,9 +27,11 @@ void dbCLK(int but)
 void paintFunc()
 {
 	Renderer::bindImage(img);
-	Renderer::setDrawColor(Color{ 0,0,0 });
+	Renderer::setDrawColor(Color{ 121,77,49 });
 	Renderer::clear();
 
+	dfaTest.drawDFA();
+	/*
 	Renderer::setDrawColor(Color{ 255, 0, 255 });
 	BezierCurve q = BezierCurve();
 	q.addPoint(Vec2f(36+8, 64));
@@ -56,13 +60,12 @@ void paintFunc()
 	Renderer::drawText("Q4", 64-16, 196-8);
 
 	Renderer::drawText("a", 64, 0);
-	
+	*/
 }
 
 int main()
 {
-	
-	WndWindow wnd(1280, 720, "TITLE");
+	WndWindow wnd(640, 480, "TITLE");
 	
 	img = wnd.getImage();
 	Renderer::bindFont(&myFont);
@@ -77,6 +80,5 @@ int main()
 		System::sleepMicros(16666);
 	}
 	
-	system("pause");
 	return 0;
 }
