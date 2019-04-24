@@ -1,18 +1,50 @@
-﻿  Bitmap.cpp
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(179): warning C4838: conversion from 'int' to 'unsigned char' requires a narrowing conversion
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(205): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(273): warning C4838: conversion from 'int' to 'unsigned char' requires a narrowing conversion
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(323): warning C4838: conversion from 'int' to 'unsigned char' requires a narrowing conversion
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(366): warning C4838: conversion from 'int' to 'unsigned char' requires a narrowing conversion
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(402): warning C4838: conversion from 'int' to 'unsigned char' requires a narrowing conversion
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(202): warning C4101: 'red': unreferenced local variable
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(202): warning C4101: 'blue': unreferenced local variable
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(202): warning C4101: 'green': unreferenced local variable
-  Source.cpp
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\source.cpp(56): warning C4018: '>': signed/unsigned mismatch
+﻿  DFA.cpp
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(30): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(38): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(48): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(61): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(78): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(120): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(178): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(226): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(228): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(229): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(236): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(245): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(246): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(248): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(249): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(254): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(255): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(257): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(258): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(264): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(265): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(387): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(389): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(390): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(450): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(452): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(453): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(460): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(469): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(470): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(472): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(473): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(478): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(479): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(481): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(482): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(488): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(489): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(612): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(614): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(615): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(682): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(688): warning C4018: '<': signed/unsigned mismatch
   Generating code
-  30 of 897 functions ( 3.3%) were compiled, the rest were copied from previous compilation.
+  1 of 897 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    17 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   DFA_Project.vcxproj -> C:\Users\Alan\Documents\Visual Studio 2017\Projects\DFA_Project\Release\DFA_Project.exe

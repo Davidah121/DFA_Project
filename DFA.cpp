@@ -646,7 +646,7 @@ bool DFA::processStringInteractive(std::string input, int indexOfChar)
 				}
 				else
 				{
-					Renderer::setDrawColor({ 200,255,255 });
+					Renderer::setDrawColor({ 120,255,255 });
 				}
 			}
 			else
