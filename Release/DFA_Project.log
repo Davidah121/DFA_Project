@@ -1,8 +1,18 @@
-﻿  Source.cpp
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\source.cpp(45): warning C4018: '>': signed/unsigned mismatch
+﻿  Bitmap.cpp
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(179): warning C4838: conversion from 'int' to 'unsigned char' requires a narrowing conversion
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(205): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(273): warning C4838: conversion from 'int' to 'unsigned char' requires a narrowing conversion
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(323): warning C4838: conversion from 'int' to 'unsigned char' requires a narrowing conversion
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(366): warning C4838: conversion from 'int' to 'unsigned char' requires a narrowing conversion
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(402): warning C4838: conversion from 'int' to 'unsigned char' requires a narrowing conversion
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(202): warning C4101: 'red': unreferenced local variable
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(202): warning C4101: 'blue': unreferenced local variable
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\bitmap.cpp(202): warning C4101: 'green': unreferenced local variable
+  Source.cpp
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\source.cpp(56): warning C4018: '>': signed/unsigned mismatch
   Generating code
-  4 of 897 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+  30 of 897 functions ( 3.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    3 functions had inline decision re-evaluated but remain unchanged
+    17 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   DFA_Project.vcxproj -> C:\Users\Alan\Documents\Visual Studio 2017\Projects\DFA_Project\Release\DFA_Project.exe

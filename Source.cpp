@@ -11,7 +11,7 @@ BMPFont myFont = BMPFont("newFont");
 DFA* dfaTest = nullptr;
 std::string procString = "";
 
-int index = 0;
+int index = -1;
 int timePassed = 0;
 bool tock = false;
 
@@ -21,18 +21,29 @@ void paintFunc()
 	Renderer::setDrawColor(Color{ 121,77,49 });
 	Renderer::clear();
 
-	//dfaTest.drawDFA();
-	
-	dfaTest->processStringInteractive(procString, index);
-
-	if (tock == true)
+	if (index == -1)
 	{
-		Renderer::setDrawColor(Color{ 255,255,255 });
-		Renderer::drawRect(0, 0, 32, 32);
+		dfaTest->drawDFA();
 	}
+	else
+	{
+		dfaTest->processStringInteractive(procString, index);
+		if (tock == true)
+		{
+			std::string tempText = "";
+			tempText += procString[index];
+
+			Renderer::setDrawColor(Color{ 255,255,255 });
+			Renderer::drawText(tempText, 0, 0);
+		}
+	}
+
+	Renderer::setDrawColor(Color{ 255,255,255 });
+	Renderer::drawText(procString, 320, 0);
+
 	timePassed++;
 
-	if (timePassed > 30)
+	if (timePassed > 45)
 	{
 		tock = false;
 	}
@@ -47,6 +58,8 @@ void paintFunc()
 			index = procString.size();
 		}
 	}
+
+
 }
 
 int main(int argc, char** argv)
@@ -56,7 +69,7 @@ int main(int argc, char** argv)
 		dfaTest = new DFA(argv[1]);
 		procString = argv[2];
 
-		WndWindow wnd(640, 480, "TITLE");
+		WndWindow wnd(640, 480, "DFA");
 
 		img = wnd.getImage();
 		Renderer::bindFont(&myFont);
@@ -82,6 +95,5 @@ int main(int argc, char** argv)
 	{
 		std::cout << "Not enough arguments were provided" << std::endl;
 	}
-	system("pause");
 	return 0;
 }

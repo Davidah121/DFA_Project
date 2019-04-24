@@ -66,7 +66,7 @@ Bitmap * Bitmap::loadImage(char * filename)
 		size = file.getSize();
 		data = new char[size];
 
-		std::cout << "SIZE: " << size << std::endl;
+		//std::cout << "SIZE: " << size << std::endl;
 		
 		for (int i = 0; i < size; i++)
 		{
@@ -331,7 +331,7 @@ void Bitmap::loadBMP(char* fileData, int dataSize)
 	}
 	else if (bpp == 24)
 	{
-		std::cout << "24 bits" << std::endl;
+		//std::cout << "24 bits" << std::endl;
 		//Assume no alpha.
 		//Assume no palette.
 		//must always be 4 byte aligned. 1x1 image takes 4 bytes still.
