@@ -293,7 +293,7 @@ void DFA::drawDFA()
 				temp.addPoint(Vec2f(160 + midX, 120 + midY));
 				temp.addPoint(Vec2f(160 + x2, 120 + y2));
 
-				Renderer::setDrawColor(Color{ 120, 0, 120 });
+				Renderer::setDrawColor(Color{ 255, 255, 255 });
 				Renderer::drawBezierCurve(temp);
 
 				Vec2f midOfCurve = temp.evaluate(0.5);
@@ -302,7 +302,7 @@ void DFA::drawDFA()
 				{
 					if (yChange < 0)
 					{
-						Renderer::setDrawColor({ 180, 0, 180 });
+						Renderer::setDrawColor({ 255, 255, 255 });
 						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x - 16, (int)midOfCurve.y);
 						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x, (int)midOfCurve.y + 16);
 
@@ -321,7 +321,7 @@ void DFA::drawDFA()
 					}
 					else
 					{
-						Renderer::setDrawColor({ 180, 0, 180 });
+						Renderer::setDrawColor({ 255, 255, 255 });
 						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x - 16, (int)midOfCurve.y);
 						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x, (int)midOfCurve.y - 16);
 
@@ -343,7 +343,7 @@ void DFA::drawDFA()
 				{
 					if (yChange < 0)
 					{
-						Renderer::setDrawColor({ 180, 0, 180 });
+						Renderer::setDrawColor({ 255, 255, 255 });
 						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x + 16, (int)midOfCurve.y);
 						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x, (int)midOfCurve.y + 16);
 
@@ -362,7 +362,7 @@ void DFA::drawDFA()
 					}
 					else
 					{
-						Renderer::setDrawColor({ 180, 0, 180 });
+						Renderer::setDrawColor({ 255, 255, 255 });
 						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x + 16, (int)midOfCurve.y);
 						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x, (int)midOfCurve.y - 16);
 
@@ -517,7 +517,7 @@ bool DFA::processStringInteractive(std::string input, int indexOfChar)
 				temp.addPoint(Vec2f(160 + midX, 120 + midY));
 				temp.addPoint(Vec2f(160 + x2, 120 + y2));
 
-				Renderer::setDrawColor(Color{ 120, 0, 120 });
+				Renderer::setDrawColor(Color{ 255, 255, 255 });
 				Renderer::drawBezierCurve(temp);
 
 				Vec2f midOfCurve = temp.evaluate(0.5);
@@ -526,7 +526,7 @@ bool DFA::processStringInteractive(std::string input, int indexOfChar)
 				{
 					if (yChange < 0)
 					{
-						Renderer::setDrawColor({ 180, 0, 180 });
+						Renderer::setDrawColor({ 255, 255, 255 });
 						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x - 16, (int)midOfCurve.y);
 						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x, (int)midOfCurve.y + 16);
 
@@ -545,7 +545,7 @@ bool DFA::processStringInteractive(std::string input, int indexOfChar)
 					}
 					else
 					{
-						Renderer::setDrawColor({ 180, 0, 180 });
+						Renderer::setDrawColor({ 255, 255, 255 });
 						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x - 16, (int)midOfCurve.y);
 						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x, (int)midOfCurve.y - 16);
 
@@ -567,7 +567,7 @@ bool DFA::processStringInteractive(std::string input, int indexOfChar)
 				{
 					if (yChange < 0)
 					{
-						Renderer::setDrawColor({ 180, 0, 180 });
+						Renderer::setDrawColor({ 255, 255, 255 });
 						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x + 16, (int)midOfCurve.y);
 						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x, (int)midOfCurve.y + 16);
 
@@ -586,7 +586,7 @@ bool DFA::processStringInteractive(std::string input, int indexOfChar)
 					}
 					else
 					{
-						Renderer::setDrawColor({ 180, 0, 180 });
+						Renderer::setDrawColor({ 255, 255, 255 });
 						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x + 16, (int)midOfCurve.y);
 						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x, (int)midOfCurve.y - 16);
 
@@ -659,14 +659,7 @@ bool DFA::processStringInteractive(std::string input, int indexOfChar)
 			Renderer::drawText(dfaStates[i].getName(), 160 + x - 12, 120 + y - 12);
 		}
 
-		if (indexOfChar == input.size())
-		{
-			return false;
-		}
-		else
-		{
-			return true;
-		}
+		return true;
 	}
 
 	return false;

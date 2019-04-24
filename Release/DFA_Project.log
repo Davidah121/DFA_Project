@@ -40,10 +40,10 @@ c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(489): wa
 c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(612): warning C4018: '<': signed/unsigned mismatch
 c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(614): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(615): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(682): warning C4018: '<': signed/unsigned mismatch
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(688): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(675): warning C4018: '<': signed/unsigned mismatch
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(681): warning C4018: '<': signed/unsigned mismatch
   Generating code
-  1 of 897 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+  3 of 897 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

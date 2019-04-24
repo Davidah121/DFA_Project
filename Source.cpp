@@ -14,6 +14,7 @@ std::string procString = "";
 int index = -1;
 int timePassed = 0;
 bool tock = false;
+bool canContinue = true;
 
 void paintFunc()
 {
@@ -27,20 +28,28 @@ void paintFunc()
 	}
 	else
 	{
-		dfaTest->processStringInteractive(procString, index);
-		if (tock == true)
+		if (canContinue == true)
 		{
-			std::string tempText = "";
-			tempText += procString[index];
+			canContinue = dfaTest->processStringInteractive(procString, index);
+			if (tock == true)
+			{
+				std::string tempText = "";
+				tempText += procString[index];
+
+				Renderer::setDrawColor(Color{ 255,255,255 });
+				Renderer::drawText(tempText, 0, 0);
+			}
 
 			Renderer::setDrawColor(Color{ 255,255,255 });
-			Renderer::drawText(tempText, 0, 0);
+			Renderer::drawText(procString, 320, 0);
+		}
+		else
+		{
+			dfaTest->drawDFA();
 		}
 	}
 
-	Renderer::setDrawColor(Color{ 255,255,255 });
-	Renderer::drawText(procString, 320, 0);
-
+	
 	timePassed++;
 
 	if (timePassed > 45)
@@ -78,6 +87,7 @@ int main(int argc, char** argv)
 
 		while (wnd.getRunning())
 		{
+			
 			wnd.repaint();
 			System::sleepMicros(16666);
 		}
