@@ -1,24 +1,5 @@
-﻿  DFA.cpp
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(30): warning C4018: '<': signed/unsigned mismatch
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(38): warning C4018: '<': signed/unsigned mismatch
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(48): warning C4018: '<': signed/unsigned mismatch
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(61): warning C4018: '<': signed/unsigned mismatch
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(78): warning C4018: '<': signed/unsigned mismatch
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(139): warning C4018: '<': signed/unsigned mismatch
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(187): warning C4018: '<': signed/unsigned mismatch
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(189): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(190): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(197): warning C4018: '<': signed/unsigned mismatch
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(206): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(207): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(210): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(211): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(213): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(214): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(253): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(261): warning C4018: '<': signed/unsigned mismatch
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(263): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(264): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(281): warning C4018: '<': signed/unsigned mismatch
-c:\users\alan\documents\visual studio 2017\projects\dfa_project\dfa.cpp(287): warning C4018: '<': signed/unsigned mismatch
+﻿  Source.cpp
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\source.cpp(9): warning C4005: 'PI': macro redefinition
+  c:\users\alan\documents\visual studio 2017\projects\dfa_project\mathext.h(7): note: see previous definition of 'PI'
+c:\users\alan\documents\visual studio 2017\projects\dfa_project\source.cpp(46): warning C4018: '>': signed/unsigned mismatch
   DFA_Project.vcxproj -> C:\Users\Alan\Documents\Visual Studio 2017\Projects\DFA_Project\Debug\DFA_Project.exe

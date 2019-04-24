@@ -14,19 +14,19 @@ public:
 	void addState(State);
 	State getState(int);
 
+	//returns true if the string is accepted and false if it is rejected.
 	bool processString(std::string);
 
 	void errorChecking();
 
-	//timeToWait in frames
-	void processStringInteractive(char* inputString, int timeToWait);
+	//returns false if it can not continue.
+	bool processStringInteractive(std::string inputString, int indexOfChar);
 	void drawDFA();
 
 	void debugStuff();
 
 private:
-	bool validDFA;
-	int framesWaited = 0;
+	bool validDFA = false;
 	int startStateIndex = -1;
 	std::vector<string> inputs = std::vector<string>();
 	std::vector<State> dfaStates = std::vector<State>();

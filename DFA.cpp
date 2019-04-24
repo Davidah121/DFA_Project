@@ -116,10 +116,11 @@ bool DFA::processString(std::string c)
 {
 	State *currentState = &dfaStates[startStateIndex];
 
+	bool invalidString = false;
 	for (int i = 0; i < c.size(); i++)
 	{
 		char currentChar = c[i];
-		State *next;
+		State *next=nullptr;
 		for (int j = 0; j < currentState->getAmountOfTransitions(); j++)
 		{
 			Transition transition = currentState->getTransition(j);			
@@ -128,17 +129,31 @@ bool DFA::processString(std::string c)
 				next = (State*)transition.output;
 			}
 		}
+
+		if (next == nullptr)
+		{
+			std::cout << "Invalid String" << std::endl;
+			invalidString = true;
+			break;
+		}
+		currentState = next;
 	}
 
-	if (currentState->isAcceptState())
+	if (invalidString == false)
 	{
-		return true;
+		if (currentState->isAcceptState())
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
 	}
-	else 
+	else
 	{
 		return false;
 	}
-
 }
 
 void DFA::errorChecking()
@@ -233,11 +248,19 @@ void DFA::drawDFA()
 				float midX = (x + x2) / 2;
 				float midY = (y + y2) / 2;
 
-				if (midX == x && midY == y)
+				if (i==index)
 				{
 					//same point, do loop.
+					x = 128 - MathExt::cos(MathExt::toRadians(dirChange * i + 8)) * 128;
+					y = 128 - MathExt::sin(MathExt::toRadians(dirChange * i + 8)) * 128;
 
+					x2 = 128 - MathExt::cos(MathExt::toRadians(dirChange * i - 8)) * 128;
+					y2 = 128 - MathExt::sin(MathExt::toRadians(dirChange * i - 8)) * 128;
+					
+					midX = 128 - MathExt::cos(MathExt::toRadians(dirChange * i)) * 224;
+					midY = 128 - MathExt::sin(MathExt::toRadians(dirChange * i)) * 224;
 				}
+
 				float yChange = y2 - y;
 				float xChange = x2 - x;
 
@@ -270,18 +293,91 @@ void DFA::drawDFA()
 				temp.addPoint(Vec2f(160 + midX, 120 + midY));
 				temp.addPoint(Vec2f(160 + x2, 120 + y2));
 
-				Renderer::setDrawColor(Color{ 0, 0, 255 });
+				Renderer::setDrawColor(Color{ 120, 0, 120 });
 				Renderer::drawBezierCurve(temp);
 
-				int y2v = 0;
-				for (int k = 0; k < dfaStates[i].getAmountOfTransitions(); k++)
+				Vec2f midOfCurve = temp.evaluate(0.5);
+
+				if (xChange > 0)
 				{
-					if (tempState == (State*)dfaStates[i].getTransition(k).output)
+					if (yChange < 0)
 					{
-						std::string text = "";
-						text += dfaStates[i].getTransition(k).input;
-						Renderer::drawText(text, 160 + midX, 120 + midY + y2v);
-						
+						Renderer::setDrawColor({ 180, 0, 180 });
+						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x - 16, (int)midOfCurve.y);
+						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x, (int)midOfCurve.y + 16);
+
+						Renderer::setDrawColor({ 0, 0, 0 });
+						int y2v = 0;
+						for (int k = 0; k < dfaStates[i].getAmountOfTransitions(); k++)
+						{
+							if (tempState == (State*)dfaStates[i].getTransition(k).output)
+							{
+								std::string text = "";
+								text += dfaStates[i].getTransition(k).input;
+								Renderer::drawText(text, (int)midOfCurve.x + 12, (int)midOfCurve.y + y2v);
+								y2v -= 16;
+							}
+						}
+					}
+					else
+					{
+						Renderer::setDrawColor({ 180, 0, 180 });
+						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x - 16, (int)midOfCurve.y);
+						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x, (int)midOfCurve.y - 16);
+
+						Renderer::setDrawColor({ 0, 0, 0 });
+						int y2v = -32;
+						for (int k = 0; k < dfaStates[i].getAmountOfTransitions(); k++)
+						{
+							if (tempState == (State*)dfaStates[i].getTransition(k).output)
+							{
+								std::string text = "";
+								text += dfaStates[i].getTransition(k).input;
+								Renderer::drawText(text, (int)midOfCurve.x + 12, (int)midOfCurve.y + y2v);
+								y2v += 16;
+							}
+						}
+					}
+				}
+				else
+				{
+					if (yChange < 0)
+					{
+						Renderer::setDrawColor({ 180, 0, 180 });
+						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x + 16, (int)midOfCurve.y);
+						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x, (int)midOfCurve.y + 16);
+
+						Renderer::setDrawColor({ 0, 0, 0 });
+						int y2v = 0;
+						for (int k = 0; k < dfaStates[i].getAmountOfTransitions(); k++)
+						{
+							if (tempState == (State*)dfaStates[i].getTransition(k).output)
+							{
+								std::string text = "";
+								text += dfaStates[i].getTransition(k).input;
+								Renderer::drawText(text, (int)midOfCurve.x - 12, (int)midOfCurve.y + y2v);
+								y2v -= 16;
+							}
+						}
+					}
+					else
+					{
+						Renderer::setDrawColor({ 180, 0, 180 });
+						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x + 16, (int)midOfCurve.y);
+						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x, (int)midOfCurve.y - 16);
+
+						Renderer::setDrawColor({ 0, 0, 0 });
+						int y2v = -32;
+						for (int k = 0; k < dfaStates[i].getAmountOfTransitions(); k++)
+						{
+							if (tempState == (State*)dfaStates[i].getTransition(k).output)
+							{
+								std::string text = "";
+								text += dfaStates[i].getTransition(k).input;
+								Renderer::drawText(text, (int)midOfCurve.x - 12, (int)midOfCurve.y + y2v);
+								y2v += 16;
+							}
+						}
 					}
 				}
 			}
@@ -293,12 +389,287 @@ void DFA::drawDFA()
 			int x = 128 - MathExt::cos(MathExt::toRadians(dirChange * i)) * 128;
 			int y = 128 - MathExt::sin(MathExt::toRadians(dirChange * i)) * 128;
 
-			Renderer::setDrawColor({ 255,255,255 });
+			Renderer::setDrawColor({ 0,0,0 });
+			
+			if (dfaStates[i].isAcceptState())
+			{
+				Renderer::drawCircle(160 + x, 120 + y, 30);
+
+				Renderer::setDrawColor({ 180,180,180 });
+				Renderer::drawCircle(160 + x, 120 + y, 28);
+
+				Renderer::setDrawColor({ 0,0,0 });
+				Renderer::drawCircle(160 + x, 120 + y, 26);
+			}
+			else
+			{
+				Renderer::drawCircle(160 + x, 120 + y, 26);
+			}
+
+			Renderer::setDrawColor({ 180,180,180 });
 			Renderer::drawCircle(160 + x, 120 + y, 24);
 			Renderer::setDrawColor({ 0,0,0 });
 			Renderer::drawText(dfaStates[i].getName(), 160 + x - 12, 120 + y - 12);
 		}
 	}
+}
+
+bool DFA::processStringInteractive(std::string input, int indexOfChar)
+{
+	
+	if (validDFA == true)
+	{
+		State* currentState = &dfaStates[startStateIndex];
+		for (int i = 0; i < indexOfChar; i++)
+		{
+			char currentChar = input[i];
+			State* next = nullptr;
+			for (int j = 0; j < currentState->getAmountOfTransitions(); j++)
+			{
+				Transition transition = currentState->getTransition(j);
+				if (transition.input == currentChar)
+				{
+					next = (State*)transition.output;
+					break;
+				}
+			}
+
+			if (next != nullptr)
+			{
+				currentState = next;
+			}
+			else
+			{
+				std::cout << "Invalid Input String" << std::endl;
+				return false;
+			}
+		}
+
+		double dirChange = 360.0 / dfaStates.size();
+
+		for (int i = 0; i < dfaStates.size(); i++)
+		{
+			int x = 128 - MathExt::cos(MathExt::toRadians(dirChange * i)) * 128;
+			int y = 128 - MathExt::sin(MathExt::toRadians(dirChange * i)) * 128;
+
+			for (int j = 0; j < dfaStates[i].getAmountOfTransitions(); j++)
+			{
+				State* tempState = (State*)dfaStates[i].getTransition(j).output;
+				int index = -1;
+
+				for (int k = 0; k < dfaStates.size(); k++)
+				{
+					if (tempState->getName() == dfaStates[k].getName())
+					{
+						index = k;
+						break;
+					}
+				}
+
+				int x2 = 128 - MathExt::cos(MathExt::toRadians(dirChange * index)) * 128;
+				int y2 = 128 - MathExt::sin(MathExt::toRadians(dirChange * index)) * 128;
+
+				float midX = (x + x2) / 2;
+				float midY = (y + y2) / 2;
+
+				if (i == index)
+				{
+					//same point, do loop.
+					x = 128 - MathExt::cos(MathExt::toRadians(dirChange * i + 8)) * 128;
+					y = 128 - MathExt::sin(MathExt::toRadians(dirChange * i + 8)) * 128;
+
+					x2 = 128 - MathExt::cos(MathExt::toRadians(dirChange * i - 8)) * 128;
+					y2 = 128 - MathExt::sin(MathExt::toRadians(dirChange * i - 8)) * 128;
+
+					midX = 128 - MathExt::cos(MathExt::toRadians(dirChange * i)) * 224;
+					midY = 128 - MathExt::sin(MathExt::toRadians(dirChange * i)) * 224;
+				}
+
+				float yChange = y2 - y;
+				float xChange = x2 - x;
+
+				bool incr = true;
+				if (xChange > 0)
+				{
+					midY += 16;
+					incr = true;
+				}
+				else if (xChange < 0)
+				{
+					midY -= 16;
+					incr = false;
+				}
+
+				if (yChange > 0)
+				{
+					midX -= 16;
+					incr = true;
+				}
+				else if (yChange < 0)
+				{
+					midX += 16;
+					incr = false;
+				}
+
+				BezierCurve temp = BezierCurve();
+
+				temp.addPoint(Vec2f(160 + x, 120 + y));
+				temp.addPoint(Vec2f(160 + midX, 120 + midY));
+				temp.addPoint(Vec2f(160 + x2, 120 + y2));
+
+				Renderer::setDrawColor(Color{ 120, 0, 120 });
+				Renderer::drawBezierCurve(temp);
+
+				Vec2f midOfCurve = temp.evaluate(0.5);
+
+				if (xChange > 0)
+				{
+					if (yChange < 0)
+					{
+						Renderer::setDrawColor({ 180, 0, 180 });
+						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x - 16, (int)midOfCurve.y);
+						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x, (int)midOfCurve.y + 16);
+
+						Renderer::setDrawColor({ 0, 0, 0 });
+						int y2v = 0;
+						for (int k = 0; k < dfaStates[i].getAmountOfTransitions(); k++)
+						{
+							if (tempState == (State*)dfaStates[i].getTransition(k).output)
+							{
+								std::string text = "";
+								text += dfaStates[i].getTransition(k).input;
+								Renderer::drawText(text, (int)midOfCurve.x + 12, (int)midOfCurve.y + y2v);
+								y2v -= 16;
+							}
+						}
+					}
+					else
+					{
+						Renderer::setDrawColor({ 180, 0, 180 });
+						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x - 16, (int)midOfCurve.y);
+						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x, (int)midOfCurve.y - 16);
+
+						Renderer::setDrawColor({ 0, 0, 0 });
+						int y2v = -32;
+						for (int k = 0; k < dfaStates[i].getAmountOfTransitions(); k++)
+						{
+							if (tempState == (State*)dfaStates[i].getTransition(k).output)
+							{
+								std::string text = "";
+								text += dfaStates[i].getTransition(k).input;
+								Renderer::drawText(text, (int)midOfCurve.x + 12, (int)midOfCurve.y + y2v);
+								y2v += 16;
+							}
+						}
+					}
+				}
+				else
+				{
+					if (yChange < 0)
+					{
+						Renderer::setDrawColor({ 180, 0, 180 });
+						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x + 16, (int)midOfCurve.y);
+						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x, (int)midOfCurve.y + 16);
+
+						Renderer::setDrawColor({ 0, 0, 0 });
+						int y2v = 0;
+						for (int k = 0; k < dfaStates[i].getAmountOfTransitions(); k++)
+						{
+							if (tempState == (State*)dfaStates[i].getTransition(k).output)
+							{
+								std::string text = "";
+								text += dfaStates[i].getTransition(k).input;
+								Renderer::drawText(text, (int)midOfCurve.x - 12, (int)midOfCurve.y + y2v);
+								y2v -= 16;
+							}
+						}
+					}
+					else
+					{
+						Renderer::setDrawColor({ 180, 0, 180 });
+						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x + 16, (int)midOfCurve.y);
+						Renderer::drawLine((int)midOfCurve.x, (int)midOfCurve.y, (int)midOfCurve.x, (int)midOfCurve.y - 16);
+
+						Renderer::setDrawColor({ 0, 0, 0 });
+						int y2v = -32;
+						for (int k = 0; k < dfaStates[i].getAmountOfTransitions(); k++)
+						{
+							if (tempState == (State*)dfaStates[i].getTransition(k).output)
+							{
+								std::string text = "";
+								text += dfaStates[i].getTransition(k).input;
+								Renderer::drawText(text, (int)midOfCurve.x - 12, (int)midOfCurve.y + y2v);
+								y2v += 16;
+							}
+						}
+					}
+				}
+
+			}
+
+		}
+
+		for (int i = 0; i < dfaStates.size(); i++)
+		{
+			int x = 128 - MathExt::cos(MathExt::toRadians(dirChange * i)) * 128;
+			int y = 128 - MathExt::sin(MathExt::toRadians(dirChange * i)) * 128;
+
+			Renderer::setDrawColor({ 0,0,0 });
+
+			if (dfaStates[i].isAcceptState())
+			{
+				Renderer::drawCircle(160 + x, 120 + y, 30);
+
+				Renderer::setDrawColor({ 180,180,180 });
+				Renderer::drawCircle(160 + x, 120 + y, 28);
+
+				Renderer::setDrawColor({ 0,0,0 });
+				Renderer::drawCircle(160 + x, 120 + y, 26);
+			}
+			else
+			{
+				Renderer::drawCircle(160 + x, 120 + y, 26);
+			}
+
+			if (&dfaStates[i] == currentState)
+			{
+				if (indexOfChar == input.size())
+				{
+					if (dfaStates[i].isAcceptState())
+					{
+						Renderer::setDrawColor({ 0,255,0 });
+					}
+					else
+					{
+						Renderer::setDrawColor({ 0,0,255 });
+					}
+				}
+				else
+				{
+					Renderer::setDrawColor({ 200,255,255 });
+				}
+			}
+			else
+			{
+				Renderer::setDrawColor({ 180,180,180 });
+			}
+			
+			Renderer::drawCircle(160 + x, 120 + y, 24);
+			Renderer::setDrawColor({ 0,0,0 });
+			Renderer::drawText(dfaStates[i].getName(), 160 + x - 12, 120 + y - 12);
+		}
+
+		if (indexOfChar == input.size())
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 void DFA::debugStuff()
